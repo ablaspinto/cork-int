@@ -1,7 +1,20 @@
 # CVE Prioritization CLI - Tool
 
-## Instructions 
-TBD
+## Setup Instructions 
+- setup virtual environment and activate
+  - python3 -m venv .venv
+  - python -m venv .venv
+  - source .venv/bin/activate -- Linux / Mac
+  - venv_name\Scripts\activate -- Windows
+
+- installing modules
+  - pip install -r requirements.txt
+  - pip3 install -r requirements.txt
+  
+
+## How to run program
+
+## Example usage
 
 
 ## Assignment 
@@ -10,6 +23,14 @@ Build a CLI Tool that fetches the latest vulnerabilites and assigns a severity r
 ### Work Flow Diagram
 
 ![Initial workflow diagram](work_flow_diagram.png "CVE Prioritization Workflow")
+
+
+
+### Design Thought process
+
+![Initial workflow diagram](second_uml_design.png "UML Diagram")
+
+
 
 
 ### Severity Rating Calculation Reasoning

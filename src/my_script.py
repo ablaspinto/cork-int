@@ -1,4 +1,6 @@
 import argparse
+from components.catalog import download_kev , find_kev
+import os
 
 
 def construct_risk_objects(epss_map, cve_scores, kev_scores):
@@ -7,6 +9,8 @@ def construct_risk_objects(epss_map, cve_scores, kev_scores):
 
 
 def main():
+    if not os.path.exists("./catalog/kev.json"):
+        download_kev()
     argument_parser = argparse.ArgumentParser(description="CLI Tool that calculates risk based on CVSS Score, EPSS, and KEV")
     argument_parser.add_argument("vendor" , type=str, help="enter a name of a vendor, for example microsoft, adobe")
     argument_parser.add_argument("product", type=str, help="enter the name of a product, for example windows, adobe, for specific version use _after product windows_10")
@@ -15,6 +19,7 @@ def main():
     vendor = arguments.vendor.lower()
     prod = arguments.product.lower()
     print("Arguments put in:", "Vendor:",vendor ,"Product:", prod)
+    
     
 
     

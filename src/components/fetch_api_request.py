@@ -1,6 +1,5 @@
 import requests
 import json
-from cvss import CVSS3
 
 def fetch_cve(vendor,product,app_type = 'o',skip_amount = 1):
     if skip_amount > 0:

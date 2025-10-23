@@ -7,14 +7,30 @@
   - source .venv/bin/activate -- Linux / Mac
   - venv_name\Scripts\activate -- Windows
 
+- Python Version
+  - I am using Python 3.13.7
+  - I am using pip 25.2 
+
+
 - installing modules
   - pip install -r requirements.txt
   - pip3 install -r requirements.txt
   
 
 ## How to run program
+  - cd into src/
+  - python3 my_script {vendor} {product} {h, o, a} --next {number}
+
 
 ## Example usage
+  - python3 my_script microsoft windows_10 o --next 2  
+    - returns next 10 elements from the intitial 10 given
+
+  - python3 my_script microsoft windows o --next 3
+    - returns 3rd list from 20-30 of the vulnerabilities of all  microsoft windows vulnerabilites with no specific version
+
+  - python3 my_script adobe photoshop a
+    - returns first list of vulnerabilites from adobe photoshop
 
 
 ## Assignment 
@@ -56,8 +72,36 @@ Build a CLI Tool that fetches the latest vulnerabilites and assigns a severity r
     - Has a Medium CVSS Score and potentially less than or greater than 50% change of occuring within the month, however if it is monitered it should be fine
   - CVSS Rating >= 7.0 and EPSS <= 10%
     - Has a low likelihood of occuring within the month while, the rating is high, and should be monitered we should also take into account what resources we want to spend on low risk.
-  
 
+
+### Severity Reasoning Cont.
+  - Naiveness
+    - Intially I was going to use if statments for the CVSS Ratings however after rereading the requirements, I came up with another way to try to mimic the diagram
+
+  - CVSS
+    - I scored CVSS with a base weight of .5 which would account for 50% as it was a way to get a good base of how high this vulnerability might score on as it takes into account AV,AC,AT,PR and, UI
+
+  - EPSS
+    - I gave this a base of .4 as 40% of the weight, as it detects how likely this requirements is to 
+    happen in a given system within the month, why lower? You may have more time to try to fix this vulnerability since it may or may not happen in a month 
+
+  - KEV
+    - I gave this a base score of .1, however with I added logic to account for if it is a kev which would then multiply it by 10 to the given severity level which would then make it critical as common vulnerabilties are the most likely to become exploited.
+
+### Road Blocks
+  - API Problems 
+    - I initally used the api given in the document, and they had changed their format midway through this coding excercise, which broke my code. I ended up picking another api cve shodan. 
+
+  - Understanding CVSS, EPSS, KEV
+    - I'm currently taking a course in secure software which had helped me prepare for this assignment before receiving it. I have even gone to my professor's office hours to ask questions about these topics.
+
+  - Time Constraints 
+    - I did not implment the unit test or the filtering feature though I would say the time I spend actively coding would be around ~2 hours after I had to refactor the previous api I used and did not want to go over the time constraints
+  - Cleaness
+    - Towards the end I was rushing so the my_script function is a little jumbled, and could definetly be refactored in a better way
+
+### Notes
+  - The api I chose did have a kev status within api however in the requirements it stated you had to go through the locally downloaded json file so it was a little redundant.
 
 
 

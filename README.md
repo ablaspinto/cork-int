@@ -4,18 +4,18 @@
 - setup virtual environment and activate
   - python3 -m venv .venv
   - python -m venv .venv
+
+- installing modules
+  - pip3 install -r requirements.txt
+  - pip install -r requirements.txt
+
+- Activate virtual environment
   - source .venv/bin/activate -- Linux / Mac
   - venv_name\Scripts\activate -- Windows
 
 - Python Version
   - I am using Python 3.13.7
   - I am using pip 25.2 
-
-
-- installing modules
-  - pip install -r requirements.txt
-  - pip3 install -r requirements.txt
-  
 
 ## How to run program
   - cd into src/

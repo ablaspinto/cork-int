@@ -13,18 +13,21 @@ def fetch_cve(vendor,product,app_type = 'o',skip_amount = 1):
         pass
     json_res= res.json()
     cve_list = json_res.get("cves")
-    for i in range(len(cve_list)):
-        cve_map = dict()
-        cve_dict = cve_list[i]
-        id = cve_dict.get("cve_id")
-        cve_map["cve_id"] = id
-        desc = cve_dict.get("summary")
-        cve_map["desc"] = desc
-        cvss = cve_dict.get("cvss")
-        cve_map["cvss"] = cvss
-        epss = cve_dict.get("epss")
-        cve_map["epss"] = epss
-        kev_status = cve_dict.get("kev")
-        cve_map["is_kev"] = kev_status
-        new_cve_list.append(cve_map)
-    return new_cve_list
+    try:
+        for i in range(len(cve_list)):
+            cve_map = dict()
+            cve_dict = cve_list[i]
+            id = cve_dict.get("cve_id")
+            cve_map["cve_id"] = id
+            desc = cve_dict.get("summary")
+            cve_map["desc"] = desc
+            cvss = cve_dict.get("cvss")
+            cve_map["cvss"] = cvss
+            epss = cve_dict.get("epss")
+            cve_map["epss"] = epss
+            kev_status = cve_dict.get("kev")
+            cve_map["is_kev"] = kev_status
+            new_cve_list.append(cve_map)
+        return new_cve_list
+    except Exception as e:
+        raise e("Vendor or product do not exist")
